@@ -98,11 +98,22 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
-        body{ font: 14px sans-serif; }
-        .wrapper{ width: 350px; padding: 20px; }
-    </style>
+       <!-- bootstrap css link -->
+       <link rel="stylesheet" href="bootstrap.css">
+
+        <!-- google fonts css link -->
+        <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+        <!-- custom style sheets -->
+        <link rel="stylesheet" href="styles.css">
+
+        <!-- internal style sheets -->
+        <style>
+                input, text {
+                text-align: center;
+            }
+        </style>
 </head>
 <body>
     <div class="wrapper">

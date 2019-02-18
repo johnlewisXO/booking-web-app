@@ -4,13 +4,15 @@ server with default setting (user 'root' with no password) */
 $hostname = 'localhost';
 $username = 'root';
 $password = 'CarolJeandre786';
-$dbname = 'bookings';
+$dbname = 'testx';
  
 /* Attempt to connect to MySQL database */
-$mysqli = new mysqli($hostname, $username, $password, $dbname);
+$conn = new mysqli($hostname, $username, $password, $dbname);
  
 // Check connection
-if($mysqli === false){
-    die("ERROR: Could not connect. " . $mysqli->connect_error);
+if($conn === false){
+    die("ERROR: Could not connect. " . $conn->connect_error);
 }
+
+
 ?>
