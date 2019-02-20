@@ -2,6 +2,11 @@
 // Initialize the session
 session_start();
  
+// Check if the user is already logged in, if yes then redirect him to welcome page
+if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
+    header("location: welcome.php");
+    exit;
+}
  
 // Include config file
 require_once "config.php";
@@ -32,23 +37,23 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Prepare a select statement
         $sql = "SELECT id, username, password FROM users WHERE username = ?";
         
-        if($stmt = mysqli_prepare($conn, $sql)){
+        if($stmt = $mysqli->prepare($sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "s", $param_username);
+            $stmt->bind_param("s", $param_username);
             
             // Set parameters
             $param_username = $username;
             
             // Attempt to execute the prepared statement
-            if(mysqli_stmt_execute($stmt)){
+            if($stmt->execute()){
                 // Store result
-                mysqli_stmt_store_result($stmt);
+                $stmt->store_result();
                 
                 // Check if username exists, if yes then verify password
-                if(mysqli_stmt_num_rows($stmt) == 1){                    
+                if($stmt->num_rows == 1){                    
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $id, $username, $hashed_password);
-                    if(mysqli_stmt_fetch($stmt)){
+                    $stmt->bind_result($id, $username, $hashed_password);
+                    if($stmt->fetch()){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
                             session_start();
@@ -75,11 +80,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
         
         // Close statement
-        mysqli_stmt_close($stmt);
+        $stmt->close();
     }
     
     // Close connection
-    mysqli_close($conn);
+    $mysqli->close();
 }
 ?>
  
@@ -87,32 +92,27 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login</title>
-       <!-- bootstrap css link -->
+    <title>Index</title>
+
+    <!-- bootstrap css link -->
     <link rel="stylesheet" href="bootstrap.css">
 
     <!-- google fonts css link -->
     <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- custom style sheets -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css\styles.css">
 
-    <!-- internal style sheets -->
-    <style>
-            input, text {
-            text-align: center;
-        }
+    <style type="text/css">
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
     </style>
-
 </head>
 <body>
-
-<center>
     <div class="wrapper">
-    
-        <h2>Login</h2>
-        <p>Please fill in your credentials to login.</p>
+        <h2>Welcome to AizenTowers!</h2>
+        <p>Please fill in your credentials to <strong><em>login.<em></strong></p>
+        <br><hr>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
             <div class="form-group <?php echo (!empty($username_err)) ? 'has-error' : ''; ?>">
                 <label>Username</label>
@@ -130,7 +130,5 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <p>Don't have an account? <a href="register.php">Sign up now</a>.</p>
         </form>
     </div>    
-
- </center>
 </body>
 </html>

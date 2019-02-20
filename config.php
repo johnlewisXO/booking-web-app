@@ -7,12 +7,10 @@ $password = 'CarolJeandre786';
 $dbname = 'testx';
  
 /* Attempt to connect to MySQL database */
-$conn = new mysqli($hostname, $username, $password, $dbname);
+$mysqli = new mysqli($hostname, $username, $password, $dbname);
  
 // Check connection
-if($conn === false){
-    die("ERROR: Could not connect. " . $conn->connect_error);
+if($mysqli === false){
+    die("ERROR: Could not connect. " . $mysqli->connect_error);
 }
-
-
 ?>

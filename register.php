@@ -1,3 +1,4 @@
+
 <?php
 // Include config file
 require_once "config.php";
@@ -98,22 +99,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <head>
     <meta charset="UTF-8">
     <title>Sign Up</title>
-       <!-- bootstrap css link -->
-       <link rel="stylesheet" href="bootstrap.css">
+    <!-- bootstrap css link -->
+    <link rel="stylesheet" href="bootstrap.css">
 
-        <!-- google fonts css link -->
-        <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- google fonts css link -->
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
 
-        <!-- custom style sheets -->
-        <link rel="stylesheet" href="styles.css">
+    <!-- custom style sheets -->
+    <link rel="stylesheet" href="css\styles.css">
 
-        <!-- internal style sheets -->
-        <style>
-                input, text {
-                text-align: center;
-            }
-        </style>
+    <style type="text/css">
+        body{ font: 14px sans-serif; }
+        .wrapper{ width: 350px; padding: 20px; }
+    </style>
 </head>
 <body>
     <div class="wrapper">
@@ -139,7 +137,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-default" value="Reset">
             </div>
-            <p>Already have an account? <a href="login.php">Login here</a>.</p>
+            <p>Already have an account? <a href="index.php">Return</a>.</p>
         </form>
     </div>    
 </body>

@@ -1,0 +1,54 @@
+body {
+    font-family: 'Cinzel', sans-serif;
+    background: lightcyan;
+}
+
+.container-main {
+    background: linear-gradient(lightblue 45deg, lightgreen 45deg);
+    width: 100%;
+}
+
+.logon-status {
+    margin: 20px 0 ; 
+    font-family: 'Cinzel', sans-serif;
+}
+
+.container-bookings {
+    margin: 5% 2% 10% 2%;
+    font-family: 'Cinzel', sans-serif;
+}
+
+.page-header {
+    font-family: 'Cinzel', sans-serif;
+}
+
+.img-aizen {
+    opacity: 0.4;
+    height: 120px;
+    width: 310px;
+}
+
+.display {
+    width: 400px;
+    margin: 200px 100px 200px 700px;
+    background: lightskyblue; 
+}
+
+input {
+    border-radius: 5px;
+    width: 350px;
+    height: 30px;
+}
+
+@-webkit-keyframes Animate {
+    0%{background-position:26% 0%}
+    25%{background-position:46% 10%}
+    50%{background-position:75% 100%}
+    75%{background-position:46% 10%}
+    100%{background-position:26% 0%}
+}
+
+body {
+    background: linear-gradient(25deg, dodgerblue, lightblue);
+    animation: Animate 2.8s ease infinite;
+  }
